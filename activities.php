@@ -8,7 +8,7 @@ include 'functions.php';
 <?=template_header('Java Activities')?>
 
 <div class="content">
-	<h2>Atividades</h2>
+	<h2>Atividade</h2>
 	<p>Bem vindo as atividades! Aqui, você vai encontrar uma grande variedade de exercícios para praticar programação em Java.</p>
 
 	<h3>Basic Java Exercises</h3>
