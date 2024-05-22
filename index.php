@@ -8,15 +8,16 @@ include 'functions.php';
 <?=template_header('Home')?>
 
 <div class="content">
-	<h2>Home</h2>
-	<p>Welcome to the JavaLearner! Are you read?</p>
+	<h2>Início</h2>
+	<p>Seja bem vindo ao Java Learners!</p>
 </div>
 
 <?=template_footer()?>
 
 <div class="content read">
-	<h2>Create an Account</h2>
-	<a href="create.php" class="create-contact">Create an Account</a>
+	<h2>Crie Sua Conta</h2>
+	<a href="create.php" class="create-contact">Crie Sua Conta</a>
 	<table>
         <thead>
             <tr>
+</div>
