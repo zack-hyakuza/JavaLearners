@@ -11,32 +11,27 @@ function pdo_connect_mysql() {
     	exit('Failed to connect to database!');
     }
 }
-
-
-$faviconUrl = 'javalearners-logo.svg';
-$faviconPath = 'C:\xampp\htdocs\phpcrud\\'. $faviconUrl;
-
-function template_header($title) 
-{
+function template_header($title) {
 echo <<<EOT
 <!DOCTYPE html>
-
 <html>
-<link rel="icon" href="javalearners-logo.svg" type="image/x-icon">
-
 	<head>
-	
 		<meta charset="utf-8">
-<link rel="icon" href="<?php echo 'javalearners-logo.svg';?>" type="image/x-icon">
-	
-		<title>JavaLearners</title>
-		
+		<title>$title</title>
 		<link href="style.css" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
 	</head>
 	<body>
-	
     <nav class="navtop">
+    	<div>
+    		<h1>JavaLearners</h1>
+            <a href="index.php"><i class="fas fa-home"></i>Home</a>
+    		<a href="read.php"><i class="fas fa-address-book"></i>Users</a>
+		   <a href="create.php"><i class="fas fa-user-plus"></i>Creat an acccount</a>
+    	</div>
+    </nav>
+
+	 <nav class="navtop">
     	<div>
     		<h1>Java Learners</h1>
             <a href="index.php"><i class="fas fa-home"></i>Ínicio</a>
@@ -45,7 +40,8 @@ echo <<<EOT
     	</div>
 		
     </nav>
-EOT;}
+EOT;
+}
 function template_footer() {
 echo <<<EOT
     </body>
