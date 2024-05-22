@@ -1,18 +1,22 @@
 <?php
 include 'functions.php';
 // Your PHP code here.
-$faviconUrl = 'javalearners-logo.svg';
-$faviconPath = 'C:\xampp\htdocs\phpcrud\\'. $faviconUrl;
+
 // Home Page template below.
 ?>
-<link rel="icon" href="<?php echo $faviconPath;?>" type="image/x-icon">
+
 <?=template_header('Home')?>
-<link rel="icon" href="<?php echo 'javalearners-logo.svg';?>" type="image/x-icon">
 
 <div class="content">
-	<h2>Bem Vindo!</h2>
-	<p>Aprenda java do básico.</p>
-	<p>Um site com o objetivo de ensinar Java de maneira acessível e dinâmica!</p>
+	<h2>Home</h2>
+	<p>Welcome to the JavaLearner! Are you read?</p>
 </div>
 
 <?=template_footer()?>
+
+<div class="content read">
+	<h2>Create an Account</h2>
+	<a href="create.php" class="create-contact">Create an Account</a>
+	<table>
+        <thead>
+            <tr>
