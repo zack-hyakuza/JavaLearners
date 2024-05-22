@@ -18,41 +18,41 @@ if (!empty($_POST)) {
     $stmt->execute([$name, $email, $phone, $title, $created]);
     
     // Output message
-    $msg = 'Created Successfully!';
+    $msg = 'Conta Criada com Sucesso!';
 }
 ?>
 
 <?=template_header('Create')?>
 
 <div class="content update">
-    <h2>Create an Account</h2>
+    <h2>Crie sua Conta</h2>
     <form action="create.php" method="post">
         <div class="input-group">
-            <label for="name">Name</label>
+            <label for="name">Nome</label>
 <div>
-            <input type="text" name="name" id="name" placeholder="John Doe"><br>
+            <input type="text" name="name" id="name" placeholder="Davi Araujo"><br>
         </div>
         <div class="input-group">
             <label for="email">Email</label>
 <div>
-            <input type="text" name="email" id="email" placeholder="johndoe@example.com"><br>
+            <input type="text" name="email" id="email" placeholder="davi41@gmail.com"><br>
         </div>
         <div class="input-group">
-            <label for="phone">Phone</label>
+            <label for="phone">Telefone</label>
 <div>
-            <input type="text" name="phone" id="phone" placeholder="2025550143"><br>
+            <input type="text" name="phone" id="phone" placeholder="11921151619"><br>
         </div>
         <div class="input-group">
-            <label for="title">Title</label>
+            <label for="title">Cargo</label>
 <div>
-            <input type="text" name="title" id="title" placeholder="Employee"><br>
+            <input type="text" name="title" id="title" placeholder="Auxiliar de Informática"><br>
         </div>
         <div class="input-group">
-            <label for="created">Created</label>
+            <label for="created">Criado</label>
 <div>
             <input type="datetime-local" name="created" id="created" value="<?=date('Y-m-d\TH:i')?>"><br>
         </div>
-        <input type="submit" value="Create">
+        <input type="submit" value="Criar">
     </form>
     <?php if ($msg): ?>
     <p><?=$msg?></p>
