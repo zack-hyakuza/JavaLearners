@@ -22,19 +22,11 @@ echo <<<EOT
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
 	</head>
 	<body>
-    <nav class="navtop">
-    	<div>
-    		<h1>JavaLearners</h1>
-            <a href="index.php"><i class="fas fa-home"></i>Home</a>
-    		<a href="read.php"><i class="fas fa-address-book"></i>Users</a>
-		   <a href="create.php"><i class="fas fa-user-plus"></i>Creat an acccount</a>
-    	</div>
-    </nav>
 
 	 <nav class="navtop">
     	<div>
     		<h1>Java Learners</h1>
-            <a href="index.php"><i class="fas fa-home"></i>Ínicio</a>
+            <a href="index.php"><i class="fas fa-home"></i>Início</a>
 			<a href="activities.php"><i class="fas fa-book"></i>Atividades</a>
     		<a href="read.php"><i class="fas fa-address-book"></i>Contatos</a>
     	</div>
