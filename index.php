@@ -5,7 +5,7 @@ include 'functions.php';
 // Home Page template below.
 ?>
 
-<?=template_header('Home')?>
+<?=template_header('JavaLearners')?>
 
 <div class="content">
 	<h2>Início</h2>
