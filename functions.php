@@ -15,6 +15,7 @@ function template_header($title) {
 echo <<<EOT
 <!DOCTYPE html>
 <html>
+<link rel="D:\xampp\htdocs\JavaLearners\javalearners-logo" href="favicon.ico" type="image/x-icon"/>
 	<head>
 		<meta charset="utf-8">
 		<title>$title</title>
