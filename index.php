@@ -12,11 +12,25 @@ include 'functions.php';
 	<p>Seja bem-vindo ao Java Learners!</p>
 </div>
 
-<?=template_footer()?>
+
 
 <div class="content read">
-	<h2>Crie a Sua Conta</h2>
-	<a href="create.php" class="create-contact">Crie Sua Conta</a>
+	<h2>Acesse a Sua Conta</h2>
+	<form action="" method="POST">
+        <p>
+            <label>E-mail</label>
+            <input type="text" name="email">
+        </p>
+        <p>
+            <label>Senha</label>
+            <input type="password" name="senha">
+        </p>
+        <p>
+	<a href="create.php" class="create-contact">Entrar</a>
+
+
+	<p>Não possui conta?</p>
+	<a href="create.php" class="create-contact">Crie uma</a>
 	<table>
         <thead>
             <tr>
