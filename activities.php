@@ -1,15 +1,16 @@
 <?php
-include 'functions.php';
-// Your PHP code here.
 
-// Java Activities Page template below.
+include 'functions.php';
+include 'conexao.php';
+include 'protect.php';
+
 ?>
 
 <?=template_header('Java Activities')?>
 
 <div class="content">
 	<h2>Atividade</h2>
-	<p>Bem vindo as atividades! Aqui, você vai encontrar uma grande variedade de exercícios para praticar programação em Java.</p>
+	<p>Bem vindo as atividades, <?php echo $_SESSION['nome']; ?> ! Aqui, você vai encontrar uma grande variedade de exercícios para praticar programação em Java.</p>
 
 	<h3>Basic Java Exercises</h3>
 	<ul>
@@ -34,6 +35,11 @@ include 'functions.php';
 		<li><a href="#">Rock, Paper, Scissors: Create a Rock, Paper, Scissors game program that allows users to play against the computer.</a></li>
 	</ul>
 
+</div>
+<div>
+	<p>
+		<a href="logout.php">Encerrar acesso</a>
+	</p>
 </div>
 
 <?=template_footer()?>
