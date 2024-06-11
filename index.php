@@ -1,8 +1,47 @@
 <?php
 include 'functions.php';
-// Your PHP code here.
+include 'conexao.php';
 
-// Home Page template below.
+if (isset($_POST['email']) || isset($_POST['senha'])) {
+    
+    if(strlen($_POST['email']) == 0){
+        echo "Preencha o campo de email.";
+    }
+    
+    else if(strlen($_POST['senha']) == 0) {
+        echo "Preencha o campo de senha.";
+    }
+    
+    else {
+
+        $email = $mysqli->real_escape_string($_POST['email']);
+        $senha = $mysqli->real_escape_string($_POST['senha']);
+
+        $sql_code = "SELECT * FROM usuarios WHERE email = '$email' AND senha = '$senha'";
+        $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
+
+        $quantidade = $sql_query->num_rows;
+
+        if($quantidade == 1) {
+
+            $usuario = $sql_query->fetch_assoc();
+            
+            if(!isset($_SESSION)){
+                session_start();
+            }
+
+            $_SESSION['id'] = $usuario['id'];
+            $_SESSION['nome'] = $usuario['nome'];
+
+            header("Location: activities.php");
+        }
+        else {
+            echo "Falha ao fazer login. E-mail ou senha incorretos.";
+        }
+    }
+
+}
+
 ?>
 
 <?=template_header('JavaLearners')?>
@@ -17,21 +56,25 @@ include 'functions.php';
 <div class="content read">
 	<h2>Acesse a Sua Conta</h2>
 	<form action="" method="POST">
+        
         <p>
-            <label>E-mail</label>
-            <input type="text" name="email">
+            <label>Email</label>
+            <input type="text" placeholder = "Email" name="email">
         </p>
+
         <p>
             <label>Senha</label>
             <input type="password" name="senha">
         </p>
+
         <p>
-	<a href="create.php" class="create-contact">Entrar</a>
+            <button type="submit">Entrar</button>
+        </p>
 
-
-	<p>Não possui conta?</p>
-	<a href="create.php" class="create-contact">Crie uma</a>
-	<table>
-        <thead>
-            <tr>
+        <h2>
+        Não possui conta?
+        </h2>
+	
+        <a href="create.php" class="create-contact">Cadastre-se</a>
+	
 </div>
