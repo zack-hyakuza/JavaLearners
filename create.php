@@ -1,7 +1,39 @@
 <?php
+
 include 'functions.php';
 include 'conexao.php';
 $msg = '';
+
+if (!empty($_POST)) {
+
+    $nome = isset($_POST['nome']) ? $_POST['nome'] : '';
+    $email = isset($_POST['email']) ? $_POST['email'] : '';
+    $senha = isset($_POST['senha']) ? $_POST['senha'] : '';
+
+    $stmt = $mysqli->prepare('INSERT INTO usuarios (nome, email, senha) VALUES(?, ?, ?)');
+    if($stmt) {
+
+            $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
+            $stmt->bind_param('sss', $nome, $email, $senha);
+
+            if($stmt->execute()){
+                $msg = 'Cadastro realizado com sucesso!';
+                header("Location: index.php");
+            }
+            else {
+                $msg = 'Falha ao realizar cadastro, tente novamente mais tarde.';
+            }
+
+            $stmt->close();
+
+    }
+    else {
+
+        $msg = 'Falha no processo de cadastro.';
+
+    }
+
+}
 
 ?>
 
