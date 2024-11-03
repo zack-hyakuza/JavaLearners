@@ -1,62 +1,74 @@
 <?php
+
 include 'functions.php';
-$pdo = pdo_connect_mysql();
+include 'conexao.php';
 $msg = '';
 
-// Check if POST data is not empty
+$activePage = 'Cadastro';
+
+date_default_timezone_set('America/Sao_Paulo');
+
 if (!empty($_POST)) {
-    // Post data not empty insert a new record
-    // Set-up the variables that are going to be inserted
-    $name = isset($_POST['name']) ? $_POST['name'] : '';
+
+    $nome = isset($_POST['nome']) ? $_POST['nome'] : '';
     $email = isset($_POST['email']) ? $_POST['email'] : '';
-    $phone = isset($_POST['phone']) ? $_POST['phone'] : '';
-    $title = isset($_POST['title']) ? $_POST['title'] : '';
-    $created = isset($_POST['created']) ? $_POST['created'] : date('Y-m-d H:i:s');
-    
-    // Insert new record into the contacts table
-    $stmt = $pdo->prepare('INSERT INTO contacts (name, email, phone, title, created) VALUES (?, ?, ?, ?, ?)');
-    $stmt->execute([$name, $email, $phone, $title, $created]);
-    
-    // Output message
-    $msg = 'Conta Criada com Sucesso!';
+    $telefone = isset($_POST['telefone']) ? $_POST['telefone'] : '';
+    $senha = isset($_POST['senha']) ? $_POST['senha'] : '';
+    $registro = date('Y-m-d H:i:s');
+
+    $stmt = $mysqli->prepare('INSERT INTO contatos (nome, email, telefone, registro, senha) VALUES(?, ?, ?, ?, ?)');
+    if ($stmt) {
+
+        $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
+        $stmt->bind_param('sssss', $nome, $email, $telefone, $registro, $senha_hash);
+
+        if ($stmt->execute()) {
+            $msg = 'Cadastro realizado com sucesso!';
+            header("Location: index.php");
+        } else {
+            $msg = 'Falha ao realizar cadastro, tente novamente mais tarde.';
+        }
+
+        $stmt->close();
+
+    } else {
+        $msg = 'Falha no processo de cadastro.';
+    }
+
 }
+
 ?>
 
-<?=template_header('Create')?>
+<?=template_header('Cadastro', $activePage)?>
 
-<div class="content update">
-    <h2>Crie sua Conta</h2>
+<div class="cadastro">
+    <h2>Cadastro</h2>
     <form action="create.php" method="post">
-        <div class="input-group">
-            <label for="name">Nome</label>
-<div>
-            <input type="text" name="name" id="name" placeholder="Davi Araujo"><br>
+        <div>
+            <label for="nome">Nome</label>
+            <input type="text" name="nome" id="nome" placeholder="James Gosling"><br>
         </div>
-        <div class="input-group">
+        <div>
             <label for="email">Email</label>
-<div>
-            <input type="text" name="email" id="email" placeholder="davi41@gmail.com"><br>
+            <input type="text" name="email" id="email" placeholder="usuario@gmail.com"><br>
         </div>
-        <div class="input-group">
-            <label for="phone">Telefone</label>
-<div>
-            <input type="text" name="phone" id="phone" placeholder="11921151619"><br>
+        <div>
+            <label for="telefone">Telefone</label>
+            <input type="text" name="telefone" id="telefone" placeholder="11992345678"><br>
         </div>
-        <div class="input-group">
-            <label for="title">Cargo</label>
-<div>
-            <input type="text" name="title" id="title" placeholder="Auxiliar de Informática"><br>
-        </div>
-        <div class="input-group">
-            <label for="created">Criado</label>
-<div>
-            <input type="datetime-local" name="created" id="created" value="<?=date('Y-m-d\TH:i')?>"><br>
+        <div>
+            <label for="senha">Senha</label>
+            <input type="password" name="senha" id="senha" placeholder="r6$nprIgl"><br>
         </div>
         <input type="submit" value="Criar">
     </form>
     <?php if ($msg): ?>
     <p><?=$msg?></p>
     <?php endif; ?>
+
+    <h2>Já possui uma conta?</h2>
+    <a href="index.php" class="btn-login-cadastro">Login</a>
 </div>
+
 
 <?=template_footer()?>
